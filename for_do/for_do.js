@@ -5,7 +5,6 @@ const fs = require('fs');
 let listadoPorHacer = [];
 
 // Function
-//
 const crear = (descripcion) => {
     cargarDB();
     let porHacer = {
@@ -33,9 +32,16 @@ const cargarDB = () => {
     } catch (e) {
         listadoPorHacer = []
     }
-
 };
+
+const getListado = () => {
+    cargarDB();
+    return listadoPorHacer;
+};
+
+
 // Exports functions
 module.exports = {
-    crear
+    crear,
+    getListado
 };
