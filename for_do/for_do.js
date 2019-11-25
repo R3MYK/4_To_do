@@ -7,6 +7,7 @@ let listadoPorHacer = [];
 // Function
 //
 const crear = (descripcion) => {
+    cargarDB();
     let porHacer = {
         descripcion,
         completado: false
@@ -25,8 +26,15 @@ const guardarDB = () => {
     });
 };
 
-const cargarDB
+// Cargar datos anteriores en data.json
+const cargarDB = () => {
+    try {
+        listadoPorHacer = require('../db/data.json');
+    } catch (e) {
+        listadoPorHacer = []
+    }
 
+};
 // Exports functions
 module.exports = {
     crear
