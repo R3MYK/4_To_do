@@ -11,14 +11,14 @@ const crear = (descripcion) => {
         descripcion,
         completado: false
     };
-    listadoPorHacer.push( porHacer);
+    listadoPorHacer.push(porHacer);
     guardarDB();
     return porHacer
 };
 
 // Guarda datos en un archivo
 const guardarDB = () => {
-    let data = JSON.stringify( listadoPorHacer);
+    let data = JSON.stringify(listadoPorHacer);
     fs.writeFile('./db/data.json', data, (err) => {
         if (err) throw err;
         console.log('la información ha sido guardada');
@@ -39,9 +39,23 @@ const getListado = () => {
     return listadoPorHacer;
 };
 
+const actualizar = (descripcion, completado = true) => {
+    cargarDB();
+    // Findindex devuelve la posición, si encuentra el elemeneto, si no lo encuentra un -1
+    let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
+    if (index >= 0) {
+        listadoPorHacer[index].completado = completado;
+        guardarDB();
+        return true;
+    } else {
+        return false
+    }
+};
+
 
 // Exports functions
 module.exports = {
     crear,
-    getListado
+    getListado,
+    actualizar
 };

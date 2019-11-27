@@ -17,17 +17,18 @@ switch (comando) {
         console.log(tarea);
         break;
     case 'list':
-        let listado =  for_do.getListado();
-        for ( let tarea of listado) {
+        let listado = for_do.getListado();
+        for (let tarea of listado) {
             console.log('============For Do============='.green);
             console.log(tarea.descripcion);
-            console.log('Estado: ', tarea.descripcion);
+            console.log('Estado: ', tarea.completado);
             console.log('==============================='.green);
         }
 
         break;
     case 'update':
-        console.log('Actualizar To do');
+        let actualizado = for_do.actualizar(argv.descripcion, argv.completado);
+        console.log(actualizado);
         break;
     default:
         console.log('Comando no reconocido')
