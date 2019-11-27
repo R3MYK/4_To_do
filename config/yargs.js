@@ -1,28 +1,22 @@
-opts = {
-    descripcion: {
+
+   const descripcion = {
         demand: true,
         alias: 'd',
         desc: 'Descripción de la tarea'
-    }
-};
-opts2 = {
-    descripcion: {
-        demand: true,
-        alias: 'd',
-        desc: 'Descripción de la tarea'
-    },
-    completado: {
+    };
+
+
+    const completado = {
         default: true,
         alias: 'c',
         desc: 'maraca como completado o pendiente la tarea'
-    }
-};
+    };
 
 // Configuration of yargs
 const argv = require('yargs')
-    .command('new', 'Crear un nuevo elemento', opts)
-    .command('update', 'Actualiza el estado de la tarea', opts2)
-    .command('drop', 'elimina la tarea', opts)
+    .command('new', 'Crear un nuevo elemento', {descripcion})
+    .command('update', 'Actualiza el estado de la tarea', {descripcion, completado})
+    .command('drop', 'elimina la tarea', {descripcion})
     .help()
     .argv;
 
