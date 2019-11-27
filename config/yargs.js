@@ -22,6 +22,7 @@ opts2 = {
 const argv = require('yargs')
     .command('new', 'Crear un nuevo elemento', opts)
     .command('update', 'Actualiza el estado de la tarea', opts2)
+    .command('drop', 'elimina la tarea', opts)
     .help()
     .argv;
 

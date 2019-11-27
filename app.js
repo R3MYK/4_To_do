@@ -30,6 +30,10 @@ switch (comando) {
         let actualizado = for_do.actualizar(argv.descripcion, argv.completado);
         console.log(actualizado);
         break;
+    case 'drop':
+        let borrado = for_do.borrar(argv.descripcion);
+        console.log(borrado);
+        break;
     default:
         console.log('Comando no reconocido')
 
